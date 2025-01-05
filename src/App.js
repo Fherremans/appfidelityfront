@@ -28,7 +28,7 @@ const App = () => {
       setEmail('');
       setPassword('');
     } catch (error) {
-      setMessage(error.response?.data?.message || 'An error occurred.');
+      setMessage(error.message || 'An error occurred.');
     }
   };
 
