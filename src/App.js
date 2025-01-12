@@ -13,6 +13,8 @@ const App = () => {
       const url = isLogin
         ? 'https://appfidelity-backend.onrender.com/login'
         : 'https://appfidelity-backend.onrender.com/signup';
+        //? 'http://localhost:5001/login'
+        //: 'http://localhost:5001/signup';
 
       const response = await axios.post(url, { email, password });
 
@@ -28,7 +30,12 @@ const App = () => {
       setEmail('');
       setPassword('');
     } catch (error) {
-      setMessage(error.message || 'An error occurred.');
+      setMessage(error.response?.data);
+      console.error('Error message:', error.message);
+      console.error('Error code:', error.code);
+      console.error('Config:', error.config);
+      console.error('Request:', error.request); // Only available if request was sent
+      console.error('Response:', error.response); // Only available if server responded
     }
   };
 
